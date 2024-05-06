@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  # rmi-registry:
+  #   image: registry:latest
+  #   ports:
+  #     - "1099:1099"  
+
+  rmi-server:
+    image: server
+    ports:
+      - "1099:1099"  
+
+  rmi-client:
+    image: client
+    depends_on:
+      - rmi-server
+    ports:
+      - "1100:1100"  
+
+  rmi-client1:
+    image: client1
+    depends_on:
+      - rmi-server
+    ports:
+      - "1200:1200" 
+
+networks:
+  rmi-network:
+    driver: bridge

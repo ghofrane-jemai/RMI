@@ -1,0 +1,7 @@
+FROM openjdk:17-oraclelinux8
+WORKDIR /app
+COPY . /app
+RUN javac -cp "lib/*" src/main/java/com/example/*.java -d /app/classes
+
+CMD ["java", "-classpath", "/app/classes:/app/lib/*", "com.example.RmiRegistry"]
+

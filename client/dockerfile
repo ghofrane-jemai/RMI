@@ -1,0 +1,7 @@
+FROM openjdk:17-oraclelinux8
+WORKDIR /app
+COPY . /app
+RUN javac -cp "lib/*" src/main/java/com/example/*.java -d /app/classes
+# EXPOSE 1099
+CMD ["java", "-classpath", "/app/classes:/app/lib/*", "com.example.ApplicationClient"]
+
